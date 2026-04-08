@@ -1,0 +1,29 @@
+# Data files — never commit real business data
+anomaly_alerting/data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Claude Code internal settings
+.claude/
+
+# Windows artefacts
+*.lnk
+
+# Office documents (project debrief, etc.)
+*.docx
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+.venv/
+env/
