@@ -82,16 +82,27 @@ drive.mount('/content/drive')
 ```
 
 ---
-
-### 📥 Cell 2 — Clone the Repository into Your Drive *(run only once)*
+### 📥 Cell 2a — Clone the Repository into Your Drive *(run only once)*
 
 ```python
-# Cell 2 — Clone the repository into your Google Drive (run only once)
-# This will copy the project into your MyDrive so you don't lose it after session ends.
+# Cell 2a — Clone the repository into your Google Drive (run only once)
+# Skip this if you have already cloned before.
 !git clone https://github.com/six10-AI-Labs/anomaly-alerting.git /content/drive/MyDrive/anomaly-alerting
 ```
 
-> ✅ Run this **only once**. If you see `destination path already exists` — the repo is already cloned. Skip to Cell 3.
+> ✅ Run this **only once**. If you see `destination path already exists` — skip to Cell 2b.
+
+---
+
+### 🔄 Cell 2b — Pull Latest Code *(run every time)*
+
+```python
+# Cell 2b — Pull latest code from GitHub (run every time)
+# This ensures you always have the latest fixes and updates.
+!git -C /content/drive/MyDrive/anomaly-alerting pull origin main
+```
+
+> ✅ Run this **every time** you start a new Colab session to get the latest code.
 
 ---
 
