@@ -596,6 +596,14 @@ def run_helium10_detection(helium10_history: pd.DataFrame, master_df: pd.DataFra
         h = h.rename(columns={"snapshot_date": "date"})
     h["date"] = pd.to_datetime(h["date"])
 
+    # Defensive: normalize ASIN column name in case preprocessing produced ASIN/Asin
+    asin_col = next((c for c in h.columns if c.lower() == "asin"), None)
+    if asin_col is None:
+        print(f"  [Helium10 Detection] No ASIN column found. Available columns: {list(h.columns)} — skipping.")
+        return pd.DataFrame()
+    if asin_col != "asin":
+        h = h.rename(columns={asin_col: "asin"})
+
     # Check if enough snapshots exist
     n_dates = h["date"].nunique()
     if n_dates < min_snaps:

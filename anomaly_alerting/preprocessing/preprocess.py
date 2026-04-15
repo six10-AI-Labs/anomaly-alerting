@@ -95,6 +95,15 @@ def standardize_returns(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
+    # Normalize ASIN column name (handles ASIN, Asin, asin from different export sources)
+    asin_col = next((c for c in df.columns if c.lower() == "asin"), None)
+    if asin_col is None:
+        raise KeyError(
+            f"[Returns] No ASIN column found. Available columns: {list(df.columns)}"
+        )
+    if asin_col != "asin":
+        df = df.rename(columns={asin_col: "asin"})
+
     # Normalize ASIN
     df["asin"] = df["asin"].astype(str).str.strip().str.upper()
 
@@ -183,6 +192,15 @@ def standardize_helium10(df: pd.DataFrame) -> pd.DataFrame:
                  organic_top10_search_volume, review_rating, review_count
     """
     df = df.copy()
+
+    # Normalize ASIN column name (handles ASIN, Asin, asin from different export sources)
+    asin_col = next((c for c in df.columns if c.lower() == "asin"), None)
+    if asin_col is None:
+        raise KeyError(
+            f"[Helium10] No ASIN column found. Available columns: {list(df.columns)}"
+        )
+    if asin_col != "asin":
+        df = df.rename(columns={asin_col: "asin"})
 
     # Normalize ASIN
     df["asin"] = df["asin"].astype(str).str.strip().str.upper()
