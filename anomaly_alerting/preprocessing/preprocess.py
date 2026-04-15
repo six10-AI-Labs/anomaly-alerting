@@ -140,13 +140,13 @@ def standardize_inventory(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     # Normalize ASIN
-    df["asin"] = df["ASIN"].astype(str).str.strip().str.upper()
+    df["asin"] = df["asin"].astype(str).str.strip().str.upper()
 
     # Keep only relevant columns
     keep = {
         "asin":                                                    "asin",
         "Total Units":                                             "total_units",
-        "Available":                                               "available_units",
+        "available":                                               "available_units",
         "Days of Supply at Amazon Fulfillment Network":            "days_of_supply",
         "Alert":                                                   "inventory_alert",
         "Recommended replenishment qty":                           "recommended_replenishment_qty",
@@ -185,7 +185,7 @@ def standardize_helium10(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     # Normalize ASIN
-    df["asin"] = df["ASIN"].astype(str).str.strip().str.upper()
+    df["asin"] = df["asin"].astype(str).str.strip().str.upper()
 
     # Keep only relevant columns
     keep = {

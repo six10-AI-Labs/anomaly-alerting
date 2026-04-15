@@ -223,7 +223,7 @@ def load_files_to_dataframe(file_list: list) -> pd.DataFrame:
 
             elif ext == ".csv":
                 try:
-                    df = pd.read_csv(file_path)
+                    df = pd.read_csv(file_path, encoding="utf-8-sig")
                     print(f"  Loaded: {file_name} — {len(df):,} rows")
                     dataframes.append(df)
                 except UnicodeDecodeError:
